@@ -1,0 +1,11 @@
+class Solution(object):
+    def sortColors(self, nums):
+        leng = len(nums)
+        nums.extend(["h"]*leng*3)
+        for i in range(leng ):
+            num = nums[i]
+            nums[i] = "h"
+            nums[(leng*(num+1))+i]= num
+        for i in range(len(nums)):
+            if "h" in nums:
+                nums.remove("h")
