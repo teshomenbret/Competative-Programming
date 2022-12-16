@@ -1,0 +1,31 @@
+import math
+import operator
+class Solution(object):
+    def kClosest(self, points, k):
+        distances = []
+        output = []
+        for point in points:
+            dis = self.findDistanceFromOrigen(point)
+            distances.append([point,dis])
+        sorted_d = sorted(distances, key=operator.itemgetter(1))
+        i = 0
+        for comp in sorted_d:
+            if i<k:
+                output.append(list(comp[0]))
+                i +=1
+
+        return output
+        
+
+        
+        
+
+    
+    def findDistanceFromOrigen(self, point):
+        sum = self.square(point[0])+self.square(point[1])
+        distance = math.sqrt(sum)
+        return distance
+         
+
+    def square(self,number):
+        return number*number
