@@ -1,0 +1,20 @@
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+
+        outPut = []
+        intervals.sort(key = lambda pair : pair[0]) 
+        outPut.append(intervals[0])
+
+        for i in range(len(intervals)):
+            if outPut[-1][1]>=intervals[i][0]:
+                if outPut[-1][1]>intervals[i][1]:
+                    continue
+                else:
+                    outPut[-1][1] = intervals[i][1]
+            else:
+                outPut.append(intervals[i])
+        return outPut
